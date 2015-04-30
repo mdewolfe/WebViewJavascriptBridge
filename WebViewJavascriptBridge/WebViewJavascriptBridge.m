@@ -373,6 +373,9 @@ static bool logging = false;
     }
 }
 
+
+// NOTE: (mike) this where the magic happens.
+// we craft a custom URL with a 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     if (webView != _webView) { return YES; }
     NSURL *url = [request URL];
