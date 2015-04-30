@@ -69,6 +69,25 @@
 				log('JS got response', response)
 			})
 		}
+		
+		var imageButton = document.getElementById('buttons').appendChild(document.createElement('button'))
+		imageButton.innerHTML = 'Add Image'
+		imageButton.onclick = function(e) {
+			e.preventDefault()
+			log('JS calling handler "addObjcImage"')
+			bridge.callHandler('addObjcImage', {'action': 'get_image'}, function(response) {
+// 				log('JS Image response', response)
+				var log = document.getElementById('log')
+				var el = document.createElement('img')
+				el.className = 'logLine'
+// 				el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
+				el.src = response
+				if (log.children.length) { log.insertBefore(el, log.children[0]) }
+				else {
+					log.appendChild(el)
+				}
+			})
+		}
 	})
 	</script>
 	<div id='buttons'></div> <div id='log'></div>

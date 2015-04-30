@@ -36,6 +36,12 @@
     [_bridge send:@"A string sent from ObjC before Webview has loaded." responseCallback:^(id responseData) {
         NSLog(@"objc got response! %@", responseData);
     }];
+
+    [_bridge registerHandler:@"addObjcImage" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSURL *imageURL = [[NSBundle mainBundle] URLForResource:@"tennis" withExtension:@"jpg"];
+        NSDictionary *responseData = @{ @"image_url" : imageURL };
+        responseCallback(responseData);
+    }];
     
     [_bridge callHandler:@"testJavascriptHandler" data:@{ @"foo":@"before ready" }];
     
