@@ -76,12 +76,11 @@
 			e.preventDefault()
 			log('JS calling handler "addObjcImage"')
 			bridge.callHandler('addObjcImage', {'action': 'get_image'}, function(response) {
-// 				log('JS Image response', response)
 				var log = document.getElementById('log')
 				var el = document.createElement('img')
 				el.className = 'logLine'
-// 				el.innerHTML = uniqueId++ + '. ' + message + ':<br/>' + JSON.stringify(data)
-				el.src = response
+				el.src = response.image_url
+				
 				if (log.children.length) { log.insertBefore(el, log.children[0]) }
 				else {
 					log.appendChild(el)

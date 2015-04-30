@@ -37,9 +37,10 @@
         NSLog(@"objc got response! %@", responseData);
     }];
 
+    // NOTE: (miked) this where we package the image info to be retured to the web view
     [_bridge registerHandler:@"addObjcImage" handler:^(id data, WVJBResponseCallback responseCallback) {
         NSURL *imageURL = [[NSBundle mainBundle] URLForResource:@"tennis" withExtension:@"jpg"];
-        NSDictionary *responseData = @{ @"image_url" : imageURL };
+        NSDictionary *responseData = @{ @"image_url" : imageURL.absoluteString };
         responseCallback(responseData);
     }];
     
